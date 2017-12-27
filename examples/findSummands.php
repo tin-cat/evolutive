@@ -17,9 +17,9 @@
 				$this->dna = $dna;
 			else
 				$this->dna = new Evolutive\Dna([
-		            "summandA" => new Evolutive\Gene($this->desiredResult * -1, $this->desiredResult),
-		            "summandB" => new Evolutive\Gene($this->desiredResult * -1, $this->desiredResult),
-		        ]);
+					"summandA" => new Evolutive\Gene($this->desiredResult * -1, $this->desiredResult),
+					"summandB" => new Evolutive\Gene($this->desiredResult * -1, $this->desiredResult),
+				]);
 		}
 
 		public function getFitness() {
@@ -29,16 +29,16 @@
 			else
 				$delta = $sum - $this->desiredResult;
 			return $this->desiredResult - $delta;
-	    }
+		}
 	}
 
 	$nursery = new Evolutive\Nursery;
-    $specimen = $nursery->evolve([
-        "isDebug" => true,
-        "specimenClassName" => "FindSummandsSpecimen",
-        "specimensPerGeneration" => 10,
-        "generations" => 1000,
-        "maxAttemptsPerGeneration" => 10
-    ]);
+	$specimen = $nursery->evolve([
+		"isDebug" => true,
+		"specimenClassName" => "FindSummandsSpecimen",
+		"specimensPerGeneration" => 10,
+		"generations" => 1000,
+		"maxAttemptsPerGeneration" => 10
+	]);
 
-    echo "Solution found by the fittest specimen: ".$specimen->getDna()->getGene("summandA")->getValue()." + ".$specimen->getDna()->getGene("summandB")->getValue()." = ".($specimen->getDna()->getGene("summandA")->getValue() + $specimen->getDna()->getGene("summandB")->getValue())." ≈ ".$specimen->desiredResult;
+	echo "Solution found by the fittest specimen: ".$specimen->getDna()->getGene("summandA")->getValue()." + ".$specimen->getDna()->getGene("summandB")->getValue()." = ".($specimen->getDna()->getGene("summandA")->getValue() + $specimen->getDna()->getGene("summandB")->getValue())." ≈ ".$specimen->desiredResult;

@@ -44,7 +44,7 @@ class Nursery {
 			$baseSpecimen = $breed->getFittestSpecimen();
 			$attemptsCount = 0;
 		}
-        return $baseSpecimen;
+		return $baseSpecimen;
 	}
 
 	private function createSpecimen() {
@@ -198,8 +198,8 @@ class Gene {
 	}
 
 	public function scale($valueIn, $baseMin, $baseMax, $limitMin, $limitMax) {
-        return (($limitMax - $limitMin) * ($valueIn - $baseMin) / ($baseMax - $baseMin)) + $limitMin;
-    }
+		return (($limitMax - $limitMin) * ($valueIn - $baseMin) / ($baseMax - $baseMin)) + $limitMin;
+	}
 
 	public function mutate() {
 		$this->value = $this->mutagen->alterValue($this->value);
