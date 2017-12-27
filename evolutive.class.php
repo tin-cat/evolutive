@@ -191,7 +191,7 @@ class Gene {
 	}
 
 	public function getValue() {
-		if ($this->min && $this->max)
+		if ($this->min !== false && $this->max !== false)
 			return $this->scale($this->value, -1, 1, $this->min, $this->max);
 		else
 			return $this->value;
