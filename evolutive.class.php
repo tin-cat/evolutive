@@ -1,7 +1,7 @@
-<?
+<?php
 
 /**
- * A library to implement simple evolutive machine learning algorithms
+ * A library to implement simple evolutive, genetics-based machine learning algorithms
  * by Tin.cat
  */
 
@@ -24,12 +24,11 @@ class Nursery {
 		// Create a specimen here to get the default dna
 		$baseSpecimen = $this->createSpecimen();
 		$previousBreed = false;
-		$generationAttempt = 1;
 		$attemptsCount = 0;
 		for ($generation = 1; $generation <= $setup["generations"]; $generation ++) {
 			$breed = new Breed($baseSpecimen, $this->specimensPerGeneration, $setup["runParameters"]);
 			if ($setup["isDebug"]) {
-				echo "Generation #".$generation."-".$generationAttempt."\n".$breed->getDebug();
+				echo "Generation #".$generation."-".$attemptsCount."\n"; // .$breed->getDebug();
 				echo "Fittest specimen: ".$breed->getFittestSpecimen()->getFitness()."\n";
 			}
 			if ($previousBreed) {
@@ -63,11 +62,11 @@ class Breed {
 	}
 
 	public function getFittestSpecimen() {
-		$bestFit = -1;
+		$bestFit = null;
 		$bestFitSpecimen = false;
 		foreach ($this->specimens as $specimen) {
 			$fitness = $specimen->getFitness();
-			if ($fitness > $bestFit) {
+			if ($fitness > $bestFit || $bestFit == null) {
 				$bestFit = $fitness;
 				$bestFitSpecimen = $specimen;
 			}
@@ -207,8 +206,8 @@ class Gene {
 		$this->mutagen->alter();
 	}
 
-	public function getDebug() {
-		return $this->getValue()." ".$this->mutagen->getDebug();
+	public function getDebug($isDebugMutagen = false) {
+		return $this->getValue().($isDebugMutagen ? " ".$this->mutagen->getDebug() : null);
 	}
 }
 
