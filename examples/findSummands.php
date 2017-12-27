@@ -10,15 +10,15 @@
 
 	class FindSummandsSpecimen extends Evolutive\Specimen {
 		private $result = false;
-		public $desiredResult = 555;
+		public $desiredResult = 10;
 		
 		public function FindSummandsSpecimen($dna = false) {
 			if ($dna)
 				$this->dna = $dna;
 			else
 				$this->dna = new Evolutive\Dna([
-		            "summandA" => new Evolutive\Gene(-1000, 1000),
-		            "summandB" => new Evolutive\Gene(-1000, 1000),
+		            "summandA" => new Evolutive\Gene($this->desiredResult * -1, $this->desiredResult),
+		            "summandB" => new Evolutive\Gene($this->desiredResult * -1, $this->desiredResult),
 		        ]);
 		}
 
@@ -37,7 +37,7 @@
         "isDebug" => true,
         "specimenClassName" => "FindSummandsSpecimen",
         "specimensPerGeneration" => 10,
-        "generations" => 10,
+        "generations" => 1000,
         "maxAttemptsPerGeneration" => 10
     ]);
 

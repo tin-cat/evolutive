@@ -28,7 +28,7 @@ class Nursery {
 		for ($generation = 1; $generation <= $setup["generations"]; $generation ++) {
 			$breed = new Breed($baseSpecimen, $this->specimensPerGeneration, $setup["runParameters"]);
 			if ($setup["isDebug"]) {
-				echo "Generation #".$generation."-".$attemptsCount."\n"; // .$breed->getDebug();
+				echo "Generation #".$generation."-".$attemptsCount."\n".$breed->getDebug();
 				echo "Fittest specimen: ".$breed->getFittestSpecimen()->getFitness()."\n";
 			}
 			if ($previousBreed) {
@@ -179,7 +179,7 @@ class Gene {
 	private $min;
 	private $max;
 
-	public function __construct($min = 0, $max = 1) {
+	public function __construct($min = false, $max = false) {
 		$this->value = .5;
 		$this->min = $min;
 		$this->max = $max;
@@ -191,7 +191,10 @@ class Gene {
 	}
 
 	public function getValue() {
-		return $this->scale($this->value, -1, 1, $this->min, $this->max);
+		if ($this->min && $this->max)
+			return $this->scale($this->value, -1, 1, $this->min, $this->max);
+		else
+			return $this->value;
 	}
 
 	public function scale($valueIn, $baseMin, $baseMax, $limitMin, $limitMax) {
@@ -224,10 +227,6 @@ class Mutagen {
 
 	public function alterValue($value) {
 		$value += $this->offset;
-		if ($value > 1)
-			$value = 1;
-		if ($value < -1)
-			$value = -1;
 		return $value;
 	}
 
