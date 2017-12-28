@@ -90,19 +90,18 @@ class Breed {
 }
 
 class Specimen {
-	public $dna;
+	protected $dna;
+	protected $baseDna;
 
 	public function Specimen($dna = false) {
-		if ($dna)
-			$this->dna = $dna;
+		$this->dna = $dna ? $dna : $this->baseDna;
 	}
 
 	public function breed($runParameters = false) {
 		$son = clone $this;
 		$son->alterMutagen();
 		$son->mutate();
-		if ($runParameters)
-			$son->run($runParameters);
+		$son->run($runParameters);
 		return $son;
 	}
 

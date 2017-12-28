@@ -9,25 +9,26 @@
 	include "../evolutive.class.php";
 
 	class FindSummandsSpecimen extends Evolutive\Specimen {
-		private $result = false;
 		public $desiredResult = 10;
+		public $result;
 		
 		public function FindSummandsSpecimen($dna = false) {
-			if ($dna)
-				$this->dna = $dna;
-			else
-				$this->dna = new Evolutive\Dna([
-					"summandA" => new Evolutive\Gene($this->desiredResult * -1, $this->desiredResult),
-					"summandB" => new Evolutive\Gene($this->desiredResult * -1, $this->desiredResult),
-				]);
+			$this->baseDna = new Evolutive\Dna([
+				"summandA" => new Evolutive\Gene(),
+				"summandB" => new Evolutive\Gene(),
+			]);
+			parent::Specimen($dna);
+		}
+
+		public function run($parameters) {
+			$this->result = $this->getDna()->getGene("summandA")->getValue() + $this->getDna()->getGene("summandB")->getValue();
 		}
 
 		public function getFitness() {
-			$sum = $this->getDna()->getGene("summandA")->getValue() + $this->getDna()->getGene("summandB")->getValue();
-			if ($this->desiredResult > $sum)
-				$delta = $this->desiredResult - $sum;
+			if ($this->desiredResult > $this->result)
+				$delta = $this->desiredResult - $this->result;
 			else
-				$delta = $sum - $this->desiredResult;
+				$delta = $this->result - $this->desiredResult;
 			return $this->desiredResult - $delta;
 		}
 	}
