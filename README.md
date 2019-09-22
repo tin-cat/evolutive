@@ -1,5 +1,5 @@
 # Evolutive
-A library to implement simple evolutive, genetics-based machine learning algorithms by [Tin.cat](https://tin.cat).
+A library to learn about evolutive, genetics-based machine learning algorithms and object-oriented programming by [Tin.cat](https://tin.cat).
 
 ## The entities
 Evolutive is built upon the following classes that represent the main entities that take part in the mechanism:
