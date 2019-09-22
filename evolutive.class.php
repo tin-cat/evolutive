@@ -1,7 +1,7 @@
 <?php
 
 /**
- * A library to implement simple evolutive, genetics-based machine learning algorithms
+ * A library to learn about simple evolutive, genetics-based machine learning algorithms and object-oriented programming.
  * by Tin.cat
  */
 
