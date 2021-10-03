@@ -1,6 +1,6 @@
 <?php
 
-namespace Evolutive;
+namespace TinCat\Evolutive;
 
 class Specimen {
 	protected $dna;
