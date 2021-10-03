@@ -1,0 +1,13 @@
+{
+    "name": "tin-cat/evolutive",
+    "description": "A library to learn about evolutive, genetics-based machine learning algorithms and object-oriented programming.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Loren",
+            "email": "loren@tin.cat"
+        }
+    ],
+    "require": {}
+}
