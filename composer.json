@@ -2,6 +2,8 @@
     "name": "tin-cat/evolutive",
     "description": "A library to learn about evolutive, genetics-based machine learning algorithms and object-oriented programming.",
     "type": "library",
+	"keywords": ["ai","artifical intelligence","genetics","machine learning"],
+	"homepage": "https://github.com/tin-cat/evolutive",
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -10,8 +12,10 @@
     },
     "authors": [
         {
-            "name": "Loren",
-            "email": "loren@tin.cat"
+            "name": "Lorenzo Herrera",
+            "email": "lorenzo@tin.cat",
+            "homepage": "http://tin.cat",
+            "role": "Developer"
         }
     ],
     "require": {}
