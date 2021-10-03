@@ -3,6 +3,11 @@
     "description": "A library to learn about evolutive, genetics-based machine learning algorithms and object-oriented programming.",
     "type": "library",
     "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "TinCat\\Evolutive\\": "src/"
+        }
+    },
     "authors": [
         {
             "name": "Loren",
